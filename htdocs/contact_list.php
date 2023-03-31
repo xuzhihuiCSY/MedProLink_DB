@@ -32,7 +32,7 @@ $result_current_user = $conn->query($sql_current_user);
 $current_user_data = $result_current_user->fetch_assoc();
 
 // Construct SQL query based on filter and search term
-$sql = "SELECT users.first_name, users.last_name, users.status FROM users INNER JOIN profiles ON users.id = profiles.user_id WHERE users.id != $current_user_id";
+$sql = "SELECT users.id, users.first_name, users.last_name, users.status FROM users INNER JOIN profiles ON users.id = profiles.user_id WHERE users.id != $current_user_id";
 
 if ($filter !== 'All') {
     $sql .= " AND FIND_IN_SET('$filter', profiles.titles) > 0";
@@ -52,8 +52,11 @@ $conn->close();
 <div>
     <h2><?php echo $current_user_data['first_name'] . ' ' . $current_user_data['last_name']; ?></h2>
     <p>Status: <?php echo $current_user_data['status']; ?></p>
+    <a href="personal_profile_edit.php">Edit Profile</a>
 </div>
-
+<form method="POST" action="logout.php">
+    <button type="submit" name="logout">Logout</button>
+</form>
 <!-- HTML form -->
 <form method="POST">
     <div>
@@ -70,13 +73,14 @@ $conn->close();
         <button type="submit" name="filter" value="Electronic Equipment Suppliers">Electronic Equipment Suppliers</button>
     </div>
 </form>
-
 <!-- Display search results -->
 <table>
     <thead>
         <tr>
             <th>Name</th>
             <th>Status</th>
+            <th>Action</th>
+            <th>Chat</th>
         </tr>
     </thead>
     <tbody>
@@ -85,14 +89,14 @@ $conn->close();
                 <tr>
                     <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
                     <td><?php echo $row['status']; ?></td>
+                    <td><a href="profile.php?id=<?php echo $row['id']; ?>">View Profile</a></td>
+                    <td><a href="chatroom.php?partner_id=<?php echo $row['id']; ?>">Chat</a></td>
                 </tr>
             <?php endwhile; ?>
         <?php else: ?>
             <tr>
-                <td colspan="2">No results found</td>
+                <td colspan="4">No results found</td>
             </tr>
         <?php endif; ?>
     </tbody>
 </table>
-
-<a href="personal_profile_edit.php">Edit Profile</a>
