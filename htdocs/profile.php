@@ -26,17 +26,48 @@ $profile_data = $result_profile->fetch_assoc();
 // Close database connection
 $conn->close();
 ?>
-
+<style>
+    .profile-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .profile-name {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 0;
+    }
+    .profile-details {
+        display: block;
+        flex-wrap: wrap;
+    }
+    .profile-detail {
+        margin: 10px 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+    .profile-detail span {
+        font-weight: bold;
+        margin-right: 10px;
+        min-width: 100px;
+        display: inline-block;
+    }
+</style>
 <!-- Display profile data -->
-<div>
-    <h2><?php echo $profile_data['first_name'] . ' ' . $profile_data['last_name']; ?></h2>
-    <p>Email: <?php echo $profile_data['email']; ?></p>
-    <p>Address: <?php echo $profile_data['address']; ?></p>
-    <p>City: <?php echo $profile_data['city']; ?></p>
-    <p>Country: <?php echo $profile_data['country']; ?></p>
-    <p>Zipcode: <?php echo $profile_data['zipcode']; ?></p>
-    <p>Phone Number: <?php echo $profile_data['phone_number']; ?></p>
-    <p>Titles: <?php echo $profile_data['titles']; ?></p>
+<div class="profile-container">
+    <h2 class="profile-name"><?php echo $profile_data['first_name'] . ' ' . $profile_data['last_name']; ?></h2>
+    <div class="profile-details">
+        <p class="profile-detail"><span>Email:</span> <?php echo $profile_data['email']; ?></p>
+        <p class="profile-detail"><span>Address:</span> <?php echo $profile_data['address']; ?></p>
+        <p class="profile-detail"><span>City:</span> <?php echo $profile_data['city']; ?></p>
+        <p class="profile-detail"><span>Country:</span> <?php echo $profile_data['country']; ?></p>
+        <p class="profile-detail"><span>Zipcode:</span> <?php echo $profile_data['zipcode']; ?></p>
+        <p class="profile-detail"><span>Phone Number:</span> <?php echo $profile_data['phone_number']; ?></p>
+        <p class="profile-detail"><span>Titles:</span> <?php echo $profile_data['titles']; ?></p>
+        <a href="contact_list.php">Back to Contact List</a>
+    </div>
 </div>
-
-<a href="contact_list.php">Back to Contact List</a>

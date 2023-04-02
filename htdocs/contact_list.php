@@ -48,15 +48,70 @@ $result = $conn->query($sql);
 $conn->close();
 ?>
 
+<style>
+    div {
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    p {
+        margin: 5px 0;
+    }
+    a {
+        text-decoration: none;
+        color: #0066cc;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    input[type="text"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    button[type="submit"] {
+        padding: 5px 10px;
+        background-color: #0066cc;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button[type="submit"]:hover {
+        background-color: #0052cc;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ccc;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: normal;
+    }
+</style>
+
 <!-- Display current user's data -->
 <div>
-    <h2><?php echo $current_user_data['first_name'] . ' ' . $current_user_data['last_name']; ?></h2>
-    <p>Status: <?php echo $current_user_data['status']; ?></p>
+    <h2 style="display: inline-block;"><?php echo $current_user_data['first_name'] . ' ' . $current_user_data['last_name']; ?></h2>
+    <p style="display: inline-block;">Status: <?php echo $current_user_data['status']; ?></p>
+    <form method="POST" action="logout.php" style="display: inline-block;">
+        <button type="submit" name="logout">Logout</button>
+    </form>
+    <h4>
     <a href="personal_profile_edit.php">Edit Profile</a>
+    </h4>
 </div>
-<form method="POST" action="logout.php">
-    <button type="submit" name="logout">Logout</button>
-</form>
 <!-- HTML form -->
 <form method="POST">
     <div>

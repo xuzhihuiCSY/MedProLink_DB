@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Registration Form</title>
+    <!-- import style -->
+    <link rel="stylesheet" href="Login&register_style.css">
 </head>
 <body>
     <h1>Register</h1>

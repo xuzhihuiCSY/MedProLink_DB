@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Personal Profile Edit</title>
+	<link rel="stylesheet" href="Login&register_style.css">
 </head>
 <body>
 	<h1>Personal Profile Edit</h1>

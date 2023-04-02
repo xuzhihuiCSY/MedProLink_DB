@@ -43,17 +43,89 @@ $chat_partner_data = $result_chat_partner->fetch_assoc();
 $conn->close();
 ?>
 
+<style>
+    /* Style for chat messages */
+    .chat-container {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .chat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .chat-back {
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .chat-messages {
+        overflow-y: scroll;
+        height: 80%;
+    }
+
+    .chat-message {
+        margin-bottom: 10px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .chat-message-sender {
+        background-color: #b2d6ff;
+        color: #333;
+        text-align: right;
+    }
+
+    .chat-message-receiver {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    /* Style for message input form */
+    .message-form {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .message-input {
+        flex-grow: 1;
+        margin-right: 10px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .message-send {
+        padding: 5px 10px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+
 <!-- Display chat messages -->
-<div>
-    <h2>Chatting with <?php echo $chat_partner_data['first_name'] . ' ' . $chat_partner_data['last_name']; ?></h2>
-    <a href="contact_list.php">Back to Contact List</a>
-    <div>
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>Chatting with <?php echo $chat_partner_data['first_name'] . ' ' . $chat_partner_data['last_name']; ?></h2>
+        <a href="contact_list.php" class="chat-back">Back to Contact List</a>
+    </div>
+    <div class="chat-messages">
         <?php if ($result->num_rows > 0): ?>
             <?php while($row = $result->fetch_assoc()): ?>
                 <?php if ($row['sender_id'] === $current_user_id): ?>
-                    <p>You: <?php echo $row['message']; ?></p>
+                    <div class="chat-message chat-message-sender"><?php echo $row['message']; ?></div>
                 <?php else: ?>
-                    <p><?php echo $chat_partner_data['first_name'] . ': ' . $row['message']; ?></p>
+                    <div class="chat-message chat-message-receiver"><?php echo $chat_partner_data['first_name'] . ': ' . $row['message']; ?></div>
                 <?php endif; ?>
             <?php endwhile; ?>
         <?php else: ?>
@@ -63,9 +135,10 @@ $conn->close();
 </div>
 
 <!-- HTML form -->
-<form method="POST">
+<form method="POST" class="message-form">
     <div>
-        <input type="text" name="message" placeholder="Type a message...">
-        <button type="submit">Send</button>
+        <input type="text" name="message" class="message-input" placeholder="Type a message...">
+        <button type="submit" class="message-send">Send</button>
     </div>
 </form>
+
