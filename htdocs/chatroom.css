@@ -1,0 +1,106 @@
+.chat-box{
+    width: 50%;
+    height: 70%;
+    background-color: #f1f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* it is scrollable */
+    overflow-y: scroll;
+    resize: both;
+}
+
+/* Chat container */
+.chatroom-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Chat messages container */
+.chat-messages {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+/* Individual chat message */
+.message {
+  margin-bottom: 10px;
+}
+
+/* Sent messages */
+.message-sent {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* Received messages */
+.message-received {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Message content */
+.message-content {
+  background-color: lightskyblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Message text */
+.message-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Message date */
+.message-date {
+  font-size: 12px;
+  text-align: right;
+}
+
+/* Message sender name */
+.message-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Chat input form */
+.chat-form {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Chat input field */
+.chat-input {
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Chat send button */
+.chat-send {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
