@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Calendar Event Creator</title>
+    <!-- Add your own custom CSS here -->
+</head>
+<body>
+    <h1>Google Calendar Event Creator 2.0</h1>
+    <div id="g_id_onload"
+         data-client_id="1068557961902-su51koau39rv4c5gjhk4sd2apbhi9kco.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin"></div>
+
+    <div id="event-form" style="display:none">
+        <label for="event-title">Event Title:</label>
+        <input type="text" id="event-title">
+        <br>
+        <label for="start-time">Start Time:</label>
+        <input type="datetime-local" id="start-time">
+        <br>
+        <label for="end-time">End Time:</label>
+        <input type="datetime-local" id="end-time">
+        <br>
+        <label for="event-description">Event Description:</label>
+        <textarea id="event-description"></textarea>
+        <br>
+        <button id="add-event-button" onclick="addEvent()">Add Event</button>
+    </div>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        function handleCredentialResponse(response) {
+            // This function is called when a user successfully signs in
+            // `response` is an object that contains user's credential information
+            // Handle signed-in user here.
+            console.log(response);
+            
+            // Show event form after successful sign in
+            const eventForm = document.getElementById('event-form');
+            eventForm.style.display = 'block';
+        }
+
+        function addEvent() {
+            // This function will be called when the 'Add Event' button is clicked
+            // You should implement event creation here
+            
+            // For demonstration purposes, this function only logs the form data
+            const eventTitle = document.getElementById('event-title').value;
+            const startTime = document.getElementById('start-time').value;
+            const endTime = document.getElementById('end-time').value;
+            const eventDescription = document.getElementById('event-description').value;
+
+            console.log({
+                'summary': eventTitle,
+                'description': eventDescription,
+                'start': {
+                    'dateTime': startTime,
+                    'timeZone': 'America/Los_Angeles' // Set the appropriate timezone
+                },
+                'end': {
+                    'dateTime': endTime,
+                    'timeZone': 'America/Los_Angeles' // Set the appropriate timezone
+                }
+            });
+        }
+    </script>
+</body>
+</html>
