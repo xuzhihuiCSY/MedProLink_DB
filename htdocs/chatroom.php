@@ -23,7 +23,6 @@ $conn->close();
 <link rel="stylesheet" href="chatroom.css">
 
 <a href="contact_list.php">Back to Contact List</a>
-<a href="calendar.html"> add event to your google calendar</a>
 <div class = "chat-box">
     <!-- Display chat messages -->
     <div id="chat-container">
@@ -71,6 +70,6 @@ $conn->close();
         });
     });
 
-    // Poll for new chat messages every 1 seconds
+    // Poll for new chat messages every 3 seconds
     setInterval(getMessages, 1000);
 </script>
