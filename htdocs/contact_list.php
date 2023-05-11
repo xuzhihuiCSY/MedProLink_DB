@@ -148,6 +148,10 @@ ul li button {
     border: none;
     font-size: 18px; /* Change this value to adjust the size of the text */
     color: white;
+    cursor: pointer;
+    outline: none;
+    font-family: sans-serif;
+    text-align: center;
 }
 
 /* CSS for the search box */
@@ -286,9 +290,32 @@ button.login-button {
 
 table th {
     color: #03e9f4;
+    background-color:#141e30;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(0,0,0,.1);
+    border-collapse: collapse;
+    border: 1px solid #03e9f4;
+    transition: 0.5s;
+    cursor: pointer;
+    outline: none;
+  
 }
 table td{
     color:white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    
 
 }
 

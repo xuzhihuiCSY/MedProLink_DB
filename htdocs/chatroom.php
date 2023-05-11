@@ -19,24 +19,46 @@ $chat_partner_id = $_GET['partner_id'];
 // Close database connection
 $conn->close();
 ?>
+
 <!-- import chatroom.css -->
 <link rel="stylesheet" href="chatroom.css">
 
-<a href="contact_list.php">Back to Contact List</a>
+
+<style>
+    .right-image {
+        opacity: 0.3;
+        position: absolute;
+        margin-top: -580px;
+        width: 1500px;
+    height: 730px;
+    z-index: -1;
+    }
+</style>
+
+ <!-- Display image -->
+ 
+
+ <a href="contact_list.php" class="button back-button">Back to Contact List</a>
 <div class = "chat-box">
     <!-- Display chat messages -->
     <div id="chat-container">
         <div id="chat-messages"></div>
     </div>
+    
 </div>
 <!-- HTML form -->
 <form method="POST" id="message-form">
     <div>
         <input type="text" name="message" id="message-input" placeholder="Type a message...">
-        <button type="submit" id="message-send">Send</button>
+        <button type="submit" id="message-send" class="button send-button">Send
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
     </div>
 </form>
-
+<img class="right-image" src="123.jpeg" alt="image">
 <!-- jQuery library -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
